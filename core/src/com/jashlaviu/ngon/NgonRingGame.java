@@ -13,16 +13,19 @@ public class NgonRingGame extends ApplicationAdapter {
 	private Viewport viewport;
 	private OrthographicCamera camera;
 
-	private Nodo nodoTest;
+	private Tablero tablero;
 
 	@Override
 	public void create () {
 		this.batch = new SpriteBatch();
         this.camera = new OrthographicCamera();
         this.viewport = new ExtendViewport(400, 600, this.camera);
-        this.camera.position.set(200, 300, 0);
+        this.camera.position.set(100, 100, 0);
 
-        this.nodoTest = new Nodo();
+        this.tablero = new Tablero(3, 50);
+        this.tablero.agregarNodo(new Nodo());
+        this.tablero.agregarNodo(new Nodo());
+        this.tablero.agregarNodo(new Nodo());
 	}
 
 	@Override
@@ -30,7 +33,7 @@ public class NgonRingGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		this.nodoTest.render(batch, 0, 0);
+		this.tablero.render(batch);
 		batch.end();
 	}
 	

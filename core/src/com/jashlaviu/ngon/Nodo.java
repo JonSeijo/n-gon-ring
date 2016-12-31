@@ -12,8 +12,8 @@ public class Nodo {
         this.texture = new Texture(Gdx.files.internal("cell_blue.png"));
     }
 
-    public void render(SpriteBatch batch, int x, int y) {
-        batch.draw(this.texture, x, y);
+    public void render(SpriteBatch batch, Pos pos) {
+        batch.draw(this.texture, pos.x, pos.y);
     }
 
     public void setValue(int value) {
