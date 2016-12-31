@@ -22,10 +22,7 @@ public class NgonRingGame extends ApplicationAdapter {
         this.viewport = new ExtendViewport(400, 600, this.camera);
         this.camera.position.set(50, 0, 0);
         this.camera.zoom -= 0.20f;
-        this.tablero = new Tablero(3, 50);
-        for (int i = 0; i < 6; i++) {
-            this.tablero.agregarNodo(new Nodo(i));
-        }
+        this.tablero = new Tablero(3, 65);
 	}
 
 	@Override
@@ -34,7 +31,7 @@ public class NgonRingGame extends ApplicationAdapter {
         this.camera.update();
         this.batch.setProjectionMatrix(this.camera.combined);
 
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(0, 0.3f, 0.8f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		this.tablero.render(batch);

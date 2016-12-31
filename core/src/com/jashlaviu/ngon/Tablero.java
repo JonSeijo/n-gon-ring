@@ -21,6 +21,7 @@ public class Tablero {
         this.positions = new ArrayList<Pos>(this.tam * 2);
         this.nodos = new ArrayList<Nodo>();
         this.createTrianglePositions();
+        this.agregarNodos();
     }
 
     private void createTrianglePositions() {
@@ -53,12 +54,10 @@ public class Tablero {
         }
     }
 
-    public void agregarNodo(Nodo nodo) {
-        if (this.nodos.size() >= this.tam*2) {
-            System.out.println("NO podes agregar tantos nodos!!");
-            return;
+    private void agregarNodos() {
+        for (int i = 0; i < this.tam*2; i++) {
+            this.nodos.add(new Nodo(i));
         }
-        this.nodos.add(nodo);
     }
 
     public void dispose() {
