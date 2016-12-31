@@ -9,8 +9,16 @@ You can (probably) just import the complete repository with intelliJ Idea and ru
 
 Main logic is found in /core/src/com/jashlaviu/ngon
 
-![alt text][logo]
-[logo]: https://raw.githubusercontent.com/JonSeijo/n-gon-ring/master/media/prototype.gif "3-gon ring"
+### Expansion
 
+![alt text][image1]
+[image1]: https://raw.githubusercontent.com/JonSeijo/n-gon-ring/master/media/prototype.gif "3-gon ring expansion"
+
+### Rotation
+
+![alt text][image2]
+[image2]: https://raw.githubusercontent.com/JonSeijo/n-gon-ring/master/media/rotation.gif "3-gon ring rotation"
+
+---
 
 Inspired by https://projecteuler.net/problem=68
