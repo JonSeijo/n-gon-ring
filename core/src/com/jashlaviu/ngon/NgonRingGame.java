@@ -84,6 +84,7 @@ public class NgonRingGame extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		this.batch.dispose();
+		this.shaper.dispose();
 	    this.trigon.dispose();
 	}
 }

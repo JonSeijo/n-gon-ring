@@ -11,37 +11,14 @@ public class Tablero {
     private int tam, spacing;
     private int initialX, initialY;
     private ArrayList<Pos> positions;
-    private ArrayList<Nodo> nodos;
-    private ArrayList<Integer> grupo1, grupo2, grupo3;
 
     public Tablero(int tam, int spacing) {
         this.tam = tam;
         this.spacing = spacing;
         this.initialX = 0;
         this.initialY = 0;
-        this.nodos = new ArrayList<Nodo>();
-
         this.fillEmptyPositions();
         this.expandPositions(this.spacing);
-        this.agregarNodos();
-        this.crearGrupos();
-    }
-
-    private void crearGrupos() {
-        this.grupo1 = new ArrayList<Integer>(3);
-        grupo1.add(0, 0);
-        grupo1.add(1, 1);
-        grupo1.add(2, 3);
-
-        this.grupo2 = new ArrayList<Integer>(3);
-        grupo2.add(0, 2);
-        grupo2.add(1, 3);
-        grupo2.add(2, 5);
-
-        this.grupo3 = new ArrayList<Integer>(3);
-        grupo3.add(0, 4);
-        grupo3.add(1, 5);
-        grupo3.add(2, 1);
     }
 
     private void fillEmptyPositions() {
@@ -51,9 +28,9 @@ public class Tablero {
         }
     }
 
-    public void render(SpriteBatch batch) {
-        for (int i = 0; i < this.nodos.size(); i++) {
-            this.nodos.get(i).render(batch, this.positions.get(i));
+    public void render(SpriteBatch batch, ArrayList<Nodo> nodos) {
+        for (int i = 0; i < nodos.size(); i++) {
+            nodos.get(i).render(batch, this.positions.get(i));
         }
     }
 
@@ -124,24 +101,12 @@ public class Tablero {
         }
     }
 
-    private void agregarNodos() {
-        for (int i = 0; i < this.tam*2; i++) {
-            this.nodos.add(new Nodo(i));
-        }
-    }
-
-    public ArrayList<Nodo> getNodos() {
-        return this.nodos;
-    }
-
     public int getSpacing() {
         return this.spacing;
     }
 
     public void dispose() {
-        for (int i = 0; i < this.nodos.size(); i++) {
-            this.nodos.get(i).dispose();
-        }
+
     }
 
 }
