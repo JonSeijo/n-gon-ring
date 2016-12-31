@@ -18,7 +18,7 @@ public class Tablero {
         this.initialY = 0;
         this.nodos = new ArrayList<Nodo>();
         this.fillEmptyPositions();
-        this.updatePositions(this.spacing);
+        this.expandPositions(this.spacing);
         this.agregarNodos();
     }
 
@@ -35,15 +35,15 @@ public class Tablero {
         }
     }
 
-    public void updatePositions(int new_spacing) {
+    public void expandPositions(int new_spacing) {
         this.spacing = new_spacing;
 
         int ix = this.initialX;
         int iy = this.initialY;
 
-        int d = this.spacing;
-        int h = (int)(Math.sqrt(d*d - d*d/4));
-        int d_prima = (int)(Math.sqrt(d*d - h*h));
+        double d = this.spacing;
+        double h = (int)(Math.sqrt(d*d - d*d/4));
+        double d_prima = (int)(Math.sqrt(d*d - h*h));
 
         // Las coordenadas estan calculadas a mano en mi cuaderno. Pitagoras FTW
         Pos p0 = new Pos(-d/2 + ix, 3*h/2 + iy);
@@ -59,6 +59,29 @@ public class Tablero {
         this.positions.set(3, p3);
         this.positions.set(4, p4);
         this.positions.set(5, p5);
+    }
+
+    public void rotatePositions(double tita) {
+        double cos = Math.cos(tita);
+        double sen = Math.sin(tita);
+
+        for (int i = 0; i < this.positions.size(); i++) {
+            double x_old = this.positions.get(i).x;
+            double y_old = this.positions.get(i).y;
+
+            double x_old_trans = x_old - this.initialX;
+            double y_old_trans = y_old - this.initialY;
+
+            double x_new = ((x_old_trans*cos) - (y_old_trans*sen));
+            double y_new = ((x_old_trans*sen) + (y_old_trans*cos));
+
+            if (i == 0) {
+                System.out.println("\n  datos: " + String.valueOf(i));
+                System.out.println("old x: " + String.valueOf(x_old) + "  new x: " + String.valueOf(x_new));
+                System.out.println("old y: " + String.valueOf(y_old) + "  new y: " + String.valueOf(y_new));
+            }
+            this.positions.set(i, new Pos(x_new + this.initialX, y_new + this.initialY));
+        }
     }
 
     private void agregarNodos() {

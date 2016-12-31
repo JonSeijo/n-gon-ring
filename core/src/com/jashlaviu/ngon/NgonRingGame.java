@@ -29,7 +29,6 @@ public class NgonRingGame extends ApplicationAdapter {
         this.tablero = new Tablero(3, 65);
         this.spacingDelta = 2;
 
-
         Gdx.input.setInputProcessor(new GameInputAdapter(this));
 	}
 
@@ -45,6 +44,14 @@ public class NgonRingGame extends ApplicationAdapter {
             this.contract();
         }
 
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            this.tablero.rotatePositions(0.02f);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            this.tablero.rotatePositions(-0.02f);
+        }
+
+
 		Gdx.gl.glClearColor(0, 0.3f, 0.8f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
@@ -53,11 +60,11 @@ public class NgonRingGame extends ApplicationAdapter {
 	}
 
 	public void expand() {
-        this.tablero.updatePositions(this.tablero.getSpacing() + this.spacingDelta);
+        this.tablero.expandPositions(this.tablero.getSpacing() + this.spacingDelta);
     }
 
     public void contract() {
-        this.tablero.updatePositions(this.tablero.getSpacing() - this.spacingDelta);
+        this.tablero.expandPositions(this.tablero.getSpacing() - this.spacingDelta);
     }
 
     @Override

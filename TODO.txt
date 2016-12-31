@@ -1,1 +1,3 @@
 - Las medidas de la camara y viewport son valores arbitrarios, deberia estandarizar
+
+- Expandir teniendo en cuenta la relacion anterior, para poder rotar

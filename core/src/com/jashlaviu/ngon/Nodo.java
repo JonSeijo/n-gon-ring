@@ -17,8 +17,8 @@ public class Nodo {
     }
 
     public void render(SpriteBatch batch, Pos pos) {
-        batch.draw(this.texture, pos.x, pos.y);
-        this.font.draw(batch, String.valueOf(this.value), pos.x + 12, pos.y + 22);
+        batch.draw(this.texture, (int)pos.x, (int)pos.y);
+        this.font.draw(batch, String.valueOf(this.value), (int)(pos.x + 12), (int)(pos.y + 22));
     }
 
     public void setValue(int value) {
