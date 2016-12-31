@@ -1,0 +1,1 @@
+- Las medidas de la camara y viewport son valores arbitrarios, deberia estandarizar
