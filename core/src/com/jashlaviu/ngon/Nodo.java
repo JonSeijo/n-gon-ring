@@ -11,7 +11,7 @@ public class Nodo {
     private BitmapFont font;
 
     public Nodo(int value) {
-        this.texture = new Texture(Gdx.files.internal("cell_blue.png"));
+        this.texture = new Texture(Gdx.files.internal("node_blue.png"));
         this.value = value;
         this.font = new BitmapFont();
     }

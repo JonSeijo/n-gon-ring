@@ -67,6 +67,10 @@ public class Tablero {
         }
     }
 
+    public int getSpacing() {
+        return this.spacing;
+    }
+
     public void dispose() {
         for (int i = 0; i < this.nodos.size(); i++) {
             this.nodos.get(i).dispose();
