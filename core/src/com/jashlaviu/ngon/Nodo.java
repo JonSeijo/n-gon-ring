@@ -10,15 +10,23 @@ public class Nodo {
     private int value;
     private BitmapFont font;
 
+    private int width, height;
+
     public Nodo(int value) {
         this.texture = new Texture(Gdx.files.internal("node_blue.png"));
+        this.width = this.texture.getWidth();
+        this.height = this.texture.getHeight();
         this.value = value;
         this.font = new BitmapFont();
     }
 
     public void render(SpriteBatch batch, Pos pos) {
-        batch.draw(this.texture, (int)pos.x, (int)pos.y);
-        this.font.draw(batch, String.valueOf(this.value), (int)(pos.x + 12), (int)(pos.y + 22));
+
+        int x_pos = (int)(pos.x - this.width/2);
+        int y_pos = (int)(pos.y - this.height/2);
+
+        batch.draw(this.texture, x_pos, y_pos);
+        this.font.draw(batch, String.valueOf(this.value), (int)(x_pos + 12), (int)(y_pos + 22));
     }
 
     public void setValue(int value) {

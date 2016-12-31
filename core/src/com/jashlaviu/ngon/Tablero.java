@@ -1,6 +1,8 @@
 package com.jashlaviu.ngon;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
 
@@ -33,6 +35,34 @@ public class Tablero {
         for (int i = 0; i < this.nodos.size(); i++) {
             this.nodos.get(i).render(batch, this.positions.get(i));
         }
+    }
+
+    public void draw(ShapeRenderer shaper) {
+
+        Pos p0 = this.positions.get(0);
+        Pos p1 = this.positions.get(1);
+        Pos p2 = this.positions.get(2);
+        Pos p3 = this.positions.get(3);
+        Pos p4 = this.positions.get(4);
+        Pos p5 = this.positions.get(5);
+
+        Vector2 v0 = new Vector2((float)p0.x, (float)p0.y);
+        Vector2 v1 = new Vector2((float)p1.x, (float)p1.y);
+        Vector2 v2 = new Vector2((float)p2.x, (float)p2.y);
+        Vector2 v3 = new Vector2((float)p3.x, (float)p3.y);
+        Vector2 v4 = new Vector2((float)p4.x, (float)p4.y);
+        Vector2 v5 = new Vector2((float)p5.x, (float)p5.y);
+
+        shaper.line(v0, v1);
+        shaper.line(v1, v3);
+
+        shaper.line(v2, v3);
+        shaper.line(v3, v5);
+
+        shaper.line(v4, v5);
+        shaper.line(v5, v1);
+
+
     }
 
     public void expandPositions(int new_spacing) {

@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -13,21 +14,25 @@ import java.security.Key;
 
 public class NgonRingGame extends ApplicationAdapter {
 	private SpriteBatch batch;
+    private ShapeRenderer shaper;
 	private Viewport viewport;
 	private OrthographicCamera camera;
 
 	private Tablero tablero;
 	private int spacingDelta;
+	private float rotationAngle;
 
 	@Override
 	public void create () {
 		this.batch = new SpriteBatch();
+		this.shaper = new ShapeRenderer();
         this.camera = new OrthographicCamera();
         this.viewport = new ExtendViewport(400, 600, this.camera);
         this.camera.position.set(50, 0, 0);
         this.camera.zoom -= 0.20f;
         this.tablero = new Tablero(3, 65);
         this.spacingDelta = 2;
+        this.rotationAngle = 0.035f;
 
         Gdx.input.setInputProcessor(new GameInputAdapter(this));
 	}
@@ -36,6 +41,7 @@ public class NgonRingGame extends ApplicationAdapter {
 	public void render () {
         this.camera.update();
         this.batch.setProjectionMatrix(this.camera.combined);
+        this.shaper.setProjectionMatrix(camera.combined);
 
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             this.expand();
@@ -45,18 +51,23 @@ public class NgonRingGame extends ApplicationAdapter {
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            this.tablero.rotatePositions(0.025f);
+            this.tablero.rotatePositions(-this.rotationAngle);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            this.tablero.rotatePositions(-0.025f);
+            this.tablero.rotatePositions(this.rotationAngle);
         }
-
 
 		Gdx.gl.glClearColor(0, 0.3f, 0.8f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		this.tablero.render(batch);
-		batch.end();
+
+        this.shaper.setAutoShapeType(true);
+        this.shaper.begin();
+        this.tablero.draw(this.shaper);
+        this.shaper.end();
+
+        this.batch.begin();
+        this.tablero.render(this.batch);
+        this.batch.end();
 	}
 
 	public void expand() {
