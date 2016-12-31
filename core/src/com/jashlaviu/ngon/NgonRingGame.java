@@ -10,15 +10,13 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import java.security.Key;
-
 public class NgonRingGame extends ApplicationAdapter {
 	private SpriteBatch batch;
     private ShapeRenderer shaper;
 	private Viewport viewport;
 	private OrthographicCamera camera;
 
-	private Tablero tablero;
+	private Trigon trigon;
 	private int spacingDelta;
 	private float rotationAngle;
 
@@ -30,7 +28,7 @@ public class NgonRingGame extends ApplicationAdapter {
         this.viewport = new ExtendViewport(400, 600, this.camera);
         this.camera.position.set(50, 0, 0);
         this.camera.zoom -= 0.20f;
-        this.tablero = new Tablero(3, 65);
+        this.trigon = new Trigon(65);
         this.spacingDelta = 2;
         this.rotationAngle = 0.035f;
 
@@ -51,10 +49,10 @@ public class NgonRingGame extends ApplicationAdapter {
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            this.tablero.rotatePositions(-this.rotationAngle);
+            this.trigon.rotatePositions(-this.rotationAngle);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            this.tablero.rotatePositions(this.rotationAngle);
+            this.trigon.rotatePositions(this.rotationAngle);
         }
 
 		Gdx.gl.glClearColor(0, 0.3f, 0.8f, 1);
@@ -62,20 +60,20 @@ public class NgonRingGame extends ApplicationAdapter {
 
         this.shaper.setAutoShapeType(true);
         this.shaper.begin();
-        this.tablero.draw(this.shaper);
+        this.trigon.draw(this.shaper);
         this.shaper.end();
 
         this.batch.begin();
-        this.tablero.render(this.batch);
+        this.trigon.render(this.batch);
         this.batch.end();
 	}
 
 	public void expand() {
-        this.tablero.expandPositions(this.tablero.getSpacing() + this.spacingDelta);
+        this.trigon.expandPositions(this.trigon.getSpacing() + this.spacingDelta);
     }
 
     public void contract() {
-        this.tablero.expandPositions(this.tablero.getSpacing() - this.spacingDelta);
+        this.trigon.expandPositions(this.trigon.getSpacing() - this.spacingDelta);
     }
 
     @Override
@@ -86,6 +84,6 @@ public class NgonRingGame extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		this.batch.dispose();
-	    this.tablero.dispose();
+	    this.trigon.dispose();
 	}
 }

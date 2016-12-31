@@ -12,6 +12,7 @@ public class Tablero {
     private int initialX, initialY;
     private ArrayList<Pos> positions;
     private ArrayList<Nodo> nodos;
+    private ArrayList<Integer> grupo1, grupo2, grupo3;
 
     public Tablero(int tam, int spacing) {
         this.tam = tam;
@@ -19,9 +20,28 @@ public class Tablero {
         this.initialX = 0;
         this.initialY = 0;
         this.nodos = new ArrayList<Nodo>();
+
         this.fillEmptyPositions();
         this.expandPositions(this.spacing);
         this.agregarNodos();
+        this.crearGrupos();
+    }
+
+    private void crearGrupos() {
+        this.grupo1 = new ArrayList<Integer>(3);
+        grupo1.add(0, 0);
+        grupo1.add(1, 1);
+        grupo1.add(2, 3);
+
+        this.grupo2 = new ArrayList<Integer>(3);
+        grupo2.add(0, 2);
+        grupo2.add(1, 3);
+        grupo2.add(2, 5);
+
+        this.grupo3 = new ArrayList<Integer>(3);
+        grupo3.add(0, 4);
+        grupo3.add(1, 5);
+        grupo3.add(2, 1);
     }
 
     private void fillEmptyPositions() {
@@ -38,7 +58,6 @@ public class Tablero {
     }
 
     public void draw(ShapeRenderer shaper) {
-
         Pos p0 = this.positions.get(0);
         Pos p1 = this.positions.get(1);
         Pos p2 = this.positions.get(2);
@@ -55,14 +74,10 @@ public class Tablero {
 
         shaper.line(v0, v1);
         shaper.line(v1, v3);
-
         shaper.line(v2, v3);
         shaper.line(v3, v5);
-
         shaper.line(v4, v5);
         shaper.line(v5, v1);
-
-
     }
 
     public void expandPositions(int new_spacing) {
@@ -113,6 +128,10 @@ public class Tablero {
         for (int i = 0; i < this.tam*2; i++) {
             this.nodos.add(new Nodo(i));
         }
+    }
+
+    public ArrayList<Nodo> getNodos() {
+        return this.nodos;
     }
 
     public int getSpacing() {
