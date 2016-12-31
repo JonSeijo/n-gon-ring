@@ -26,18 +26,18 @@ public class Tablero {
     private void createTrianglePositions() {
         int ix = this.initialX;
         int iy = this.initialY;
-        int spa = this.spacing;
-        int d_spa = (int) (this.spacing / 1.4142f); // raiz de 2
-        int lambda = (int) (2 * 1.4142f);
 
-        Pos p0 = new Pos(-d_spa*lambda + ix, d_spa*lambda + iy);
-        Pos p1 = new Pos(-d_spa + ix, d_spa + iy);
+        int d = this.spacing;
+        int h = (int)(Math.sqrt(d*d - d*d/4));
+        int d_prima = (int)(Math.sqrt(d*d - h*h));
 
-        Pos p2 = new Pos(spa*lambda + ix, 0 + iy);
-        Pos p3 = new Pos(spa + ix, 0 + iy);
-
-        Pos p4 = new Pos(-d_spa*lambda + ix, -d_spa*lambda + iy);
-        Pos p5 = new Pos(-d_spa + ix, -d_spa + iy);
+        // Las coordenadas estan calculadas a mano en mi cuaderno. Pitagoras FTW
+        Pos p0 = new Pos(-d/2 + ix, 3*h/2 + iy);
+        Pos p1 = new Pos(0 + ix, h/2 + iy);
+        Pos p2 = new Pos(3*d/2 + ix, -h/2 + iy);
+        Pos p3 = new Pos(d/2 + ix, -h/2 + iy);
+        Pos p4 = new Pos(-(d/2 + d_prima) + ix, -3*h/2 + iy);
+        Pos p5 = new Pos(-d/2 + ix, -h/2 + iy);
 
         this.positions.add(0, p0);
         this.positions.add(1, p1);
@@ -45,8 +45,6 @@ public class Tablero {
         this.positions.add(3, p3);
         this.positions.add(4, p4);
         this.positions.add(5, p5);
-
-
     }
 
     public void render(SpriteBatch batch) {
