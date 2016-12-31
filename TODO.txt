@@ -1,1 +1,2 @@
 - Las medidas de la camara y viewport son valores arbitrarios, deberia estandarizar
+- Agregar clase para excepciones custom (ej no agregar tantos nodos)
