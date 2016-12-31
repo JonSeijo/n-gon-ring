@@ -45,10 +45,10 @@ public class NgonRingGame extends ApplicationAdapter {
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            this.tablero.rotatePositions(0.02f);
+            this.tablero.rotatePositions(0.025f);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            this.tablero.rotatePositions(-0.02f);
+            this.tablero.rotatePositions(-0.025f);
         }
 
 
