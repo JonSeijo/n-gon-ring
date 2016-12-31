@@ -5,7 +5,7 @@ n-gon-ring puzzle game
 
 Made with Java using libgdx framework for graphics.
 
-You can (probably) just import the complete repository with intelliJ Idea and run DesktopLauncher.java in /n-gon-ring/desktop 
+If you have libgdx installed, you can (probably) just import the complete repository with intelliJ Idea and run DesktopLauncher.java in /n-gon-ring/desktop. A ready-to-run version will be uploaded soon.
 
 Main logic is found in /core/src/com/jashlaviu/ngon
 
