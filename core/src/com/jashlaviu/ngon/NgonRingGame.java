@@ -21,7 +21,7 @@ public class NgonRingGame extends ApplicationAdapter {
         this.camera = new OrthographicCamera();
         this.viewport = new ExtendViewport(400, 600, this.camera);
         this.camera.position.set(100, -100, 0);
-        this.camera.zoom -= 0.15f;
+        this.camera.zoom -= 0.20f;
         this.tablero = new Tablero(3, 50);
         for (int i = 0; i < 6; i++) {
             this.tablero.agregarNodo(new Nodo(i));

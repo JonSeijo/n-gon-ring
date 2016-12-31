@@ -27,13 +27,17 @@ public class Tablero {
         int ix = this.initialX;
         int iy = this.initialY;
         int spa = this.spacing;
+        int d_spa = (int) (this.spacing / 1.4142f); // raiz de 2
+        int lambda = (int) (2 * 1.4142f);
 
-        Pos p0 = new Pos(ix, iy);
-        Pos p1 = new Pos(ix + spa, iy - spa);
-        Pos p3 = new Pos(p1.x + spa, p1.y - spa);
-        Pos p2 = new Pos(p3.x + spa, p3.y);
-        Pos p5 = new Pos(p3.x - spa, p3.y);
-        Pos p4 = new Pos(p5.x - spa, p5.y - spa);
+        Pos p0 = new Pos(-d_spa*lambda + ix, d_spa*lambda + iy);
+        Pos p1 = new Pos(-d_spa + ix, d_spa + iy);
+
+        Pos p2 = new Pos(spa*lambda + ix, 0 + iy);
+        Pos p3 = new Pos(spa + ix, 0 + iy);
+
+        Pos p4 = new Pos(-d_spa*lambda + ix, -d_spa*lambda + iy);
+        Pos p5 = new Pos(-d_spa + ix, -d_spa + iy);
 
         this.positions.add(0, p0);
         this.positions.add(1, p1);
