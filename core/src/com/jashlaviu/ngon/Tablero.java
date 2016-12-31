@@ -19,14 +19,30 @@ public class Tablero {
         this.initialX = 0;
         this.initialY = 0;
         this.positions = new ArrayList<Pos>(this.tam * 2);
-        this.nodos= new ArrayList<Nodo>();
-        this.fillPositions();
+        this.nodos = new ArrayList<Nodo>();
+        this.createTrianglePositions();
     }
 
-    private void fillPositions() {
-        this.positions.add(0, new Pos(this.initialX, this.initialY));
-        this.positions.add(1, new Pos(this.initialX + this.spacing, this.initialY - this.spacing));
-        this.positions.add(2, new Pos(this.initialX + this.spacing*2, this.initialY - this.spacing*2));
+    private void createTrianglePositions() {
+        int ix = this.initialX;
+        int iy = this.initialY;
+        int spa = this.spacing;
+
+        Pos p0 = new Pos(ix, iy);
+        Pos p1 = new Pos(ix + spa, iy - spa);
+        Pos p3 = new Pos(p1.x + spa, p1.y - spa);
+        Pos p2 = new Pos(p3.x + spa, p3.y);
+        Pos p5 = new Pos(p3.x - spa, p3.y);
+        Pos p4 = new Pos(p5.x - spa, p5.y - spa);
+
+        this.positions.add(0, p0);
+        this.positions.add(1, p1);
+        this.positions.add(2, p2);
+        this.positions.add(3, p3);
+        this.positions.add(4, p4);
+        this.positions.add(5, p5);
+
+
     }
 
     public void render(SpriteBatch batch) {
