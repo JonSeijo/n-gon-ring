@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 public class Trigon {
 
-    private Tablero tablero;
+    private TrigonTablero tablero;
     private ArrayList<Nodo> nodos;
     private ArrayList<Integer> grupo1, grupo2, grupo3;
 
     public Trigon(int spacing) {
-        this.tablero = new Tablero(3, spacing);
+        this.tablero = new TrigonTablero(3, spacing);
         this.nodos = new ArrayList<Nodo>();
         this.crearGrupos();
         this.agregarNodos();

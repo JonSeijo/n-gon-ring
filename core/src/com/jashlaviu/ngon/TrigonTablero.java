@@ -6,13 +6,13 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
 
-public class Tablero {
+public class TrigonTablero {
 
     private int tam, spacing;
     private int initialX, initialY;
     private ArrayList<Pos> positions;
 
-    public Tablero(int tam, int spacing) {
+    public TrigonTablero(int tam, int spacing) {
         this.tam = tam;
         this.spacing = spacing;
         this.initialX = 0;
