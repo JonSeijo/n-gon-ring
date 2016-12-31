@@ -6,10 +6,8 @@ import java.util.ArrayList;
 
 public class Tablero {
 
-    private int tam;
-    private int spacing;
-    private int initialX;
-    private int initialY;
+    private int tam, spacing;
+    private int initialX, initialY;
     private ArrayList<Pos> positions;
     private ArrayList<Nodo> nodos;
 
@@ -18,13 +16,28 @@ public class Tablero {
         this.spacing = spacing;
         this.initialX = 0;
         this.initialY = 0;
-        this.positions = new ArrayList<Pos>(this.tam * 2);
         this.nodos = new ArrayList<Nodo>();
-        this.createTrianglePositions();
+        this.fillEmptyPositions();
+        this.updatePositions(this.spacing);
         this.agregarNodos();
     }
 
-    private void createTrianglePositions() {
+    private void fillEmptyPositions() {
+        this.positions = new ArrayList<Pos>(this.tam * 2);
+        for (int i = 0; i < this.tam*2; i++) {
+            this.positions.add(i, new Pos(0, 0));
+        }
+    }
+
+    public void render(SpriteBatch batch) {
+        for (int i = 0; i < this.nodos.size(); i++) {
+            this.nodos.get(i).render(batch, this.positions.get(i));
+        }
+    }
+
+    public void updatePositions(int new_spacing) {
+        this.spacing = new_spacing;
+
         int ix = this.initialX;
         int iy = this.initialY;
 
@@ -40,18 +53,12 @@ public class Tablero {
         Pos p4 = new Pos(-(d/2 + d_prima) + ix, -3*h/2 + iy);
         Pos p5 = new Pos(-d/2 + ix, -h/2 + iy);
 
-        this.positions.add(0, p0);
-        this.positions.add(1, p1);
-        this.positions.add(2, p2);
-        this.positions.add(3, p3);
-        this.positions.add(4, p4);
-        this.positions.add(5, p5);
-    }
-
-    public void render(SpriteBatch batch) {
-        for (int i = 0; i < this.nodos.size(); i++) {
-            this.nodos.get(i).render(batch, this.positions.get(i));
-        }
+        this.positions.set(0, p0);
+        this.positions.set(1, p1);
+        this.positions.set(2, p2);
+        this.positions.set(3, p3);
+        this.positions.set(4, p4);
+        this.positions.set(5, p5);
     }
 
     private void agregarNodos() {
