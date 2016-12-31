@@ -19,6 +19,9 @@ Main logic is found in /core/src/com/jashlaviu/ngon
 ![alt text][image2]
 [image2]: https://raw.githubusercontent.com/JonSeijo/n-gon-ring/master/media/rotation.gif "3-gon ring rotation"
 
+![alt text][image3]
+[image3]: https://raw.githubusercontent.com/JonSeijo/n-gon-ring/master/media/rotation_lineas.gif "3-gon ring rotation with lines"
+
 ---
 
 Inspired by https://projecteuler.net/problem=68
