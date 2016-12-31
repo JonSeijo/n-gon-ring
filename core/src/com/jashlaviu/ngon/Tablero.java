@@ -75,11 +75,6 @@ public class Tablero {
             double x_new = ((x_old_trans*cos) - (y_old_trans*sen));
             double y_new = ((x_old_trans*sen) + (y_old_trans*cos));
 
-            if (i == 0) {
-                System.out.println("\n  datos: " + String.valueOf(i));
-                System.out.println("old x: " + String.valueOf(x_old) + "  new x: " + String.valueOf(x_new));
-                System.out.println("old y: " + String.valueOf(y_old) + "  new y: " + String.valueOf(y_new));
-            }
             this.positions.set(i, new Pos(x_new + this.initialX, y_new + this.initialY));
         }
     }
