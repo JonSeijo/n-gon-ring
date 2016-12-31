@@ -24,4 +24,8 @@ public class Nodo {
         return this.value;
     }
 
+    public void dispose() {
+        this.texture.dispose();
+    }
+
 }
