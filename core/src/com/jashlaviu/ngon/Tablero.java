@@ -16,8 +16,8 @@ public class Tablero {
     public Tablero(int tam, int spacing) {
         this.tam = tam;
         this.spacing = spacing;
-        this.initialX = 100;
-        this.initialY = 100;
+        this.initialX = 0;
+        this.initialY = 0;
         this.positions = new ArrayList<Pos>(this.tam * 2);
         this.nodos= new ArrayList<Nodo>();
         this.fillPositions();
