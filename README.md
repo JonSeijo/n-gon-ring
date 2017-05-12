@@ -11,16 +11,13 @@ Main logic is found in /core/src/com/jashlaviu/ngon
 
 ### Expansion
 
-![alt text][image1]
-[image1]: https://raw.githubusercontent.com/JonSeijo/n-gon-ring/master/media/prototype.gif "3-gon ring expansion"
+![3-gon ring expansion](https://raw.githubusercontent.com/JonSeijo/n-gon-ring/master/media/prototype.gif)
 
 ### Rotation
 
-![alt text][image2]
-[image2]: https://raw.githubusercontent.com/JonSeijo/n-gon-ring/master/media/rotation.gif "3-gon ring rotation"
+![3-gon ring rotation](https://raw.githubusercontent.com/JonSeijo/n-gon-ring/master/media/rotation.gif)
 
-![alt text][image3]
-[image3]: https://raw.githubusercontent.com/JonSeijo/n-gon-ring/master/media/rotation_lineas.gif "3-gon ring rotation with lines"
+![3-gon ring rotation with lines](https://raw.githubusercontent.com/JonSeijo/n-gon-ring/master/media/rotation_lineas.gif)
 
 ---
 
